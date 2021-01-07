@@ -10,7 +10,7 @@ module Mutations
         if user && user.valid_password?(auth[:password])
           user.generate_api_key
         else
-          raise GraphQlSchema::Exceptions::FailedLogin
+          raise GraphQL::ExecutionError, "You're not registered, please sign up"
         end
       end
     end

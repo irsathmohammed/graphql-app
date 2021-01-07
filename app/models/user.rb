@@ -10,12 +10,16 @@ class User < ApplicationRecord
   after_commit :generate_api_key  
 
   def generate_api_key
-    api_keys.active.each { |api_key| api_key.expire }
+    logout
     api_keys.create
   end
 
   def live_api_key
     api_keys.active.last
   end  
+
+  def logout
+    api_keys.active.each { |api_key| api_key.expire }    
+  end
 
 end
