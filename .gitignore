@@ -101,3 +101,10 @@ pickle-email-*.html
 /config/credentials/staging.key
 /yarn-error.log
 public/packs/manifest.json
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
