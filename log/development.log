@@ -11080,3 +11080,56 @@ Can't verify CSRF token authenticity.
 Completed 200 OK in 19ms (Views: 0.4ms | ActiveRecord: 4.7ms | Allocations: 5040)
 
 
+Started POST "/graphql" for ::1 at 2021-01-07 09:42:51 +0530
+Started POST "/graphql" for ::1 at 2021-01-07 09:42:51 +0530
+  [1m[35m (9.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by GraphqlController#execute as */*
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"\n    query IntrospectionQuery {\n      __schema {\n        queryType { name }\n        mutationType { name }\n        subscriptionType { name }\n        types {\n          ...FullType\n        }\n        directives {\n          name\n          description\n          locations\n          args {\n            ...InputValue\n          }\n        }\n      }\n    }\n\n    fragment FullType on __Type {\n      kind\n      name\n      description\n      fields(includeDeprecated: true) {\n        name\n        description\n        args {\n          ...InputValue\n        }\n        type {\n          ...TypeRef\n        }\n        isDeprecated\n        deprecationReason\n      }\n      inputFields {\n        ...InputValue\n      }\n      interfaces {\n        ...TypeRef\n      }\n      enumValues(includeDeprecated: true) {\n        name\n        description\n        isDeprecated\n        deprecationReason\n      }\n      possibleTypes {\n        ...TypeRef\n      }\n    }\n\n    fragment InputValue on __InputValue {\n      name\n      description\n      type { ...TypeRef }\n      defaultValue\n    }\n\n    fragment TypeRef on __Type {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                  ofType {\n                    kind\n                    name\n                  }\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  ", "operationName"=>"IntrospectionQuery", "graphql"=>{"query"=>"\n    query IntrospectionQuery {\n      __schema {\n        queryType { name }\n        mutationType { name }\n        subscriptionType { name }\n        types {\n          ...FullType\n        }\n        directives {\n          name\n          description\n          locations\n          args {\n            ...InputValue\n          }\n        }\n      }\n    }\n\n    fragment FullType on __Type {\n      kind\n      name\n      description\n      fields(includeDeprecated: true) {\n        name\n        description\n        args {\n          ...InputValue\n        }\n        type {\n          ...TypeRef\n        }\n        isDeprecated\n        deprecationReason\n      }\n      inputFields {\n        ...InputValue\n      }\n      interfaces {\n        ...TypeRef\n      }\n      enumValues(includeDeprecated: true) {\n        name\n        description\n        isDeprecated\n        deprecationReason\n      }\n      possibleTypes {\n        ...TypeRef\n      }\n    }\n\n    fragment InputValue on __InputValue {\n      name\n      description\n      type { ...TypeRef }\n      defaultValue\n    }\n\n    fragment TypeRef on __Type {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                  ofType {\n                    kind\n                    name\n                  }\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  ", "operationName"=>"IntrospectionQuery"}}
+  Parameters: {"query"=>"query {\n  currentUser{\n    email\n    name\n  }\n}", "graphql"=>{"query"=>"query {\n  currentUser{\n    email\n    name\n  }\n}"}}
+Can't verify CSRF token authenticity.
+Can't verify CSRF token authenticity.
+  [1m[36mApiKey Load (2.9ms)[0m  [1m[34mSELECT "api_keys".* FROM "api_keys" WHERE (expires_at > '2021-01-07 04:12:51.371467') AND "api_keys"."access_token" = $1 LIMIT $2[0m  [["access_token", "c22a237ad216289f075e070c2d0117c7"], ["LIMIT", 1]]
+  ↳ app/models/api_key.rb:8:in `verify'
+  [1m[36mUser Load (3.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/graphql_controller.rb:41:in `current_user'
+  [1m[36mApiKey Load (7.1ms)[0m  [1m[34mSELECT "api_keys".* FROM "api_keys" WHERE (expires_at > '2021-01-07 04:12:51.372117') AND "api_keys"."access_token" = $1 LIMIT $2[0m  [["access_token", "c22a237ad216289f075e070c2d0117c7"], ["LIMIT", 1]]
+  ↳ app/models/api_key.rb:8:in `verify'
+  [1m[36mApiKey Load (8.2ms)[0m  [1m[34mSELECT "api_keys".* FROM "api_keys" WHERE (expires_at > '2021-01-07 04:12:51.446771') AND "api_keys"."access_token" = $1 LIMIT $2[0m  [["access_token", "c22a237ad216289f075e070c2d0117c7"], ["LIMIT", 1]]
+  ↳ app/models/api_key.rb:8:in `verify'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/graphql_controller.rb:41:in `current_user'
+  [1m[36mUser Load (4.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/graphql_controller.rb:41:in `current_user'
+  [1m[36mApiKey Load (4.9ms)[0m  [1m[34mSELECT "api_keys".* FROM "api_keys" WHERE (expires_at > '2021-01-07 04:12:51.463625') AND "api_keys"."access_token" = $1 LIMIT $2[0m  [["access_token", "c22a237ad216289f075e070c2d0117c7"], ["LIMIT", 1]]
+  [1m[36mApiKey Load (3.4ms)[0m  [1m[34mSELECT "api_keys".* FROM "api_keys" WHERE (expires_at > '2021-01-07 04:12:51.465888') AND "api_keys"."access_token" = $1 LIMIT $2[0m  [["access_token", "c22a237ad216289f075e070c2d0117c7"], ["LIMIT", 1]]
+  ↳ app/models/api_key.rb:8:in `verify'
+  ↳ app/models/api_key.rb:8:in `verify'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/graphql_controller.rb:41:in `current_user'
+  ↳ app/controllers/graphql_controller.rb:41:in `current_user'
+  [1m[36mApiKey Load (1.4ms)[0m  [1m[34mSELECT "api_keys".* FROM "api_keys" WHERE (expires_at > '2021-01-07 04:12:51.477012') AND "api_keys"."access_token" = $1 LIMIT $2[0m  [["access_token", "c22a237ad216289f075e070c2d0117c7"], ["LIMIT", 1]]
+  ↳ app/models/api_key.rb:8:in `verify'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/graphql_controller.rb:41:in `current_user'
+Completed 200 OK in 241ms (Views: 8.6ms | ActiveRecord: 34.4ms | Allocations: 71087)
+
+
+Completed 200 OK in 243ms (Views: 0.2ms | ActiveRecord: 55.9ms | Allocations: 71171)
+
+
+Started POST "/graphql" for ::1 at 2021-01-07 09:56:40 +0530
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"mutation authSignup($auth: Auth!) {\n  authSignup(auth: $auth) {\n    accessToken\n  }\n}\n", "variables"=>{"auth"=>{"email"=>"irsath@commutatus.com", "name"=>"Irsath", "phone"=>"9578543214", "password"=>"[FILTERED]"}}, "operationName"=>"authSignup", "graphql"=>{"query"=>"mutation authSignup($auth: Auth!) {\n  authSignup(auth: $auth) {\n    accessToken\n  }\n}\n", "variables"=>{"auth"=>{"email"=>"irsath@commutatus.com", "name"=>"Irsath", "phone"=>"9578543214", "password"=>"[FILTERED]"}}, "operationName"=>"authSignup"}}
+Can't verify CSRF token authenticity.
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/graphql/mutations/auth/sign_up.rb:10:in `resolve'
+  [1m[36mUser Exists? (2.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "irsath@commutatus.com"], ["LIMIT", 1]]
+  ↳ app/graphql/mutations/auth/sign_up.rb:10:in `resolve'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/graphql/mutations/auth/sign_up.rb:10:in `resolve'
+Completed 200 OK in 416ms (Views: 0.4ms | ActiveRecord: 13.2ms | Allocations: 39742)
+
+

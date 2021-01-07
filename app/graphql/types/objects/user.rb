@@ -4,6 +4,8 @@ module Types
       field :email,  String, nil, null: false
       field :name, String, nil, null: true
       field :phone,  String, nil, null: true
+      field :posts, [Types::Objects::Post], nil, null: false
+
     end
   end
 end
